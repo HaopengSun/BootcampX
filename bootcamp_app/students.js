@@ -19,6 +19,12 @@ const queryString = `
   LIMIT $2;
   `;
 
+pool.connect((err) => {
+  if(err) throw new Error(err);
+  console.log('connected!');
+})
+
+// promise way
 pool.query(queryString, values)
 .then(res => {
   res.rows.forEach(user => {

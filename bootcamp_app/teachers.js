@@ -19,6 +19,10 @@ JOIN cohorts ON cohort_id = cohorts.id
 WHERE cohorts.name = $1
 ORDER BY teacher;
 `
+pool.connect((err) => {
+  if(err) throw new Error(err);
+  console.log('connected!');
+})
 
 pool.query(queryString, values)
 .then(res => {
