@@ -11,6 +11,7 @@ const pool = new Pool({
   database: 'bootcampx'
 });
 
+// do not use backtick
 const queryString = `
   SELECT students.id as student_id, students.name as name, cohorts.name as cohort
   FROM students
@@ -30,4 +31,4 @@ pool.query(queryString, values)
   res.rows.forEach(user => {
     console.log(`${user.name} has an id of ${user.student_id} and was in the ${user.cohort} cohort`);
   })
-});
+}).catch(err => console.log(err));
